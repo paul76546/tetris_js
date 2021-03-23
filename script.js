@@ -23,7 +23,7 @@ let playfield = [
   [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
 ];
 
-var gameSpeed = 400;
+let gameSpeed = 400;
 
 function draw() {
   let mainInnerHTML = "";
@@ -132,11 +132,14 @@ function removeFullLines() {
     for (let x = 0; x < playfield[y].length; x++) {
       if (playfield[y][x] !== 2) {
         canRemoveLine = false;
+        break;
       }
     }
     if (canRemoveLine) {
       playfield.splice(y, 1);
+      playfield.splice(0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     }
+    canRemoveLine = true;
   }
 }
 
